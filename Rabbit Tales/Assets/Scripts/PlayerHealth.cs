@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    public static PlayerHealth Instance;
     public int playerHealth;
- 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         playerHealth = 100;

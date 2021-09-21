@@ -19,7 +19,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Run();
+        if(PlayerHealth.Instance.playerHealth <= 0)
+        {
+            Die();
+            PlayerHealth.Instance.playerHealth = 0;
 
+
+        }
     }
 
     void Run()
@@ -59,7 +65,13 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetFloat("Run", 0f);
             run = false;
         }
+
+        
            
         
+    }
+    void Die()
+    {
+        playerAnimator.SetBool("Dead", true);
     }
 }
