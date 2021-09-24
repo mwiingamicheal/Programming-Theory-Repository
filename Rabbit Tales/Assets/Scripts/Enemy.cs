@@ -6,14 +6,15 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent enemNavAgent;
-    public Transform playerTrans;
+    private Transform playerTrans;
 
-    public int enemySpeed;
-    public int damage = 20;
+    public float enemySpeed;
+    public int damage = 10;
 
     private void Awake()
     {
         enemNavAgent = GetComponent<NavMeshAgent>();
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
     }
     
     void LateUpdate()
@@ -32,6 +33,10 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject == GameObject.FindGameObjectWithTag("Player"))
         {
             PlayerHealth.Instance.playerHealth -= damage;
+        } else if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
         }
     }
+
 }

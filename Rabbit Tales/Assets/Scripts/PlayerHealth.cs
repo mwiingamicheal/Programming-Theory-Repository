@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth Instance;
     public int playerHealth;
+    public int stamina;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerHealth = 100;
+        stamina = 100;
     }
 
     // Update is called once per frame

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     private Animator playerAnimator;
     public bool run;
     public int runSpeed;
