@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject[] enemies;
     private Transform rabbitTrans;
-
+    public float timer;
 
     private void Awake()
     {
@@ -18,12 +18,13 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnEnemy(3));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-    
+        TimeGame();
     }
 
 
@@ -41,5 +42,14 @@ public class EnemySpawner : MonoBehaviour
         
         StartCoroutine(SpawnEnemy(3));
 
+    }
+
+    void TimeGame()
+    {
+        timer += Time.deltaTime;
+
+        
+
+        Debug.Log(timer);
     }
 }
