@@ -8,13 +8,14 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent enemNavAgent;
     private Transform playerTrans;
 
-    public float enemySpeed;
-    public int damage = 10;
+    public float enemySpeed { get; private set; } // ENCAPSULATION
+   
 
     private void Awake()
     {
         enemNavAgent = GetComponent<NavMeshAgent>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        enemySpeed = 1.5f;
     }
     
     void LateUpdate()
@@ -32,11 +33,17 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject == GameObject.FindGameObjectWithTag("Player"))
         {
-            PlayerHealth.Instance.playerHealth -= damage;
+            DealDamage(10);
         } else if(collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
         }
+    }
+
+
+    public virtual void DealDamage(int damage)
+    {
+        PlayerHealth.Instance.playerHealth -= damage;
     }
 
 }

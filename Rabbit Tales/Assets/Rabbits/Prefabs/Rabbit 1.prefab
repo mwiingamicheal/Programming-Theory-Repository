@@ -792,7 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   run: 0
   runSpeed: 1
-  rotateSpeed: 100
+  rotateSpeed: 200
 --- !u!114 &7886591763048998626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a45a98289d23bb4fb37d61a44b525fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthIndicator: {fileID: 0}
   playerHealth: 0
   stamina: 0
 --- !u!1 &1593323770353162

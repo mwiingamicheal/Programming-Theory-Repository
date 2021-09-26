@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ResetPlayerPos();
         Run();
         if(PlayerHealth.Instance.playerHealth <= 0)
         {
@@ -74,5 +75,37 @@ public class PlayerMovement : MonoBehaviour
     void Die()
     {
         playerAnimator.SetBool("Dead", true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Health"))
+        {
+            Destroy(other.gameObject);
+            PlayerHealth.Instance.playerHealth = 100;
+        }
+    }
+
+    void ResetPlayerPos()
+    {
+        if (gameObject.transform.position.x < -55)
+        {
+            gameObject.transform.position = new Vector3(-55, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+
+        if (gameObject.transform.position.x > 55)
+        {
+            gameObject.transform.position = new Vector3(55, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+
+        if (gameObject.transform.position.z < -55)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -55);
+        }
+
+        if (gameObject.transform.position.z > 57)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 57);
+        }
     }
 }
